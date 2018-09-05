@@ -12,8 +12,7 @@
     <None Include="home-compose.yml" />
     <None Include="Proxy\setup\cert.pem" />
     <None Include="Proxy\setup\key.pem" />
-    <None Include="clima.yml" />
-    <None Include="Lirc\srv.dockerfile" />
+    <None Include="home-api.yml" />
     <None Include="Lirc\remotes\lirc24.conf" />
     <None Include="Lirc\remotes\lirc44.conf" />
     <None Include="Lirc\remotes\Samsung_BN59-00678A.conf" />

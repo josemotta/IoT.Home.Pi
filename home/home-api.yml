@@ -1,12 +1,12 @@
 version: "3"
 
 services:
-  clima:
-    container_name: clima-srv
-    image: josemottalopes/clima
+  api:
+    container_name: home-api
+    image: josemottalopes/home-api
     build:
       context: .
-      dockerfile: Lirc/srv.Dockerfile
+      dockerfile: src/IO.Swagger/api.dockerfile
     ports:
     - "5000:5000"
     network_mode: bridge
