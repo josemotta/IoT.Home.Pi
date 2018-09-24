@@ -20,6 +20,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Release
 
   portainer:
+    container_name: home-port
     image: portainer/portainer
     ports:
       - "9000:9000"
@@ -31,7 +32,7 @@ services:
 
   hass:
     container_name: home-hass
-    image: homeassistant/home-assistant
+    image: homeassistant/raspberrypi3-homeassistant
     ports:
       - "8123:8123"
     volumes:
