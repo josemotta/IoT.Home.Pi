@@ -18,3 +18,16 @@ services:
     - /var/run/lirc:/var/run/lirc
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
+
+  portainer:
+    image: portainer/portainer
+    ports:
+      - "9000:9000"
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+volumes:
+  portainer_data:
