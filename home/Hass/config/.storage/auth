@@ -1,0 +1,46 @@
+{
+    "data": {
+        "credentials": [
+            {
+                "auth_provider_id": null,
+                "auth_provider_type": "homeassistant",
+                "data": {
+                    "username": "canoas"
+                },
+                "id": "ea341296837d442f87a767d91dc29b45",
+                "user_id": "c44dd383ff55492c8e076da7b82ffbbc"
+            }
+        ],
+        "refresh_tokens": [
+            {
+                "access_token_expiration": 1800.0,
+                "client_id": "http://192.168.20.121:8123/",
+                "created_at": "2018-09-17T21:12:04.119258+00:00",
+                "id": "de7e1bbf33744407a7b014869925e6ec",
+                "jwt_key": "f5b64fa5b96c60b2fce327a277b90bea6a9386456c261e43d250221e8abf0c640e8eae77dd148592674cc9d9cc7cd4b2f5d5920f8c94b84f7d3dd99be2e5f6c5",
+                "token": "c9c3d7e0632654a803c82d0a848e33452859621abc11f91c2957a229fabf7eb35fb9130c2dccc2c56fe66fb8fc44a88135d0c58350660d311b6a3ecc55b7e442",
+                "user_id": "c44dd383ff55492c8e076da7b82ffbbc"
+            },
+            {
+                "access_token_expiration": 1800.0,
+                "client_id": "http://192.168.20.121:8123/",
+                "created_at": "2018-09-12T22:21:10.693952+00:00",
+                "id": "ceb20a041f1448c48e94bc91848fd7f5",
+                "jwt_key": "71f803f409694447ea3db8d062cb99acba8ddef839989314d00ebd9324484f78a140468dc2158177fd27041ddb65b85064b4127aff39430b985ee9bd139d051f",
+                "token": "54e0006734301d0218e3aac310157cb49dcb8579d1a74d787a296664bae9f3919c3ee41356a54fc91e472ae1a895aca76925ec979fb6cbf60b22bf4b29090be2",
+                "user_id": "c44dd383ff55492c8e076da7b82ffbbc"
+            }
+        ],
+        "users": [
+            {
+                "id": "c44dd383ff55492c8e076da7b82ffbbc",
+                "is_active": true,
+                "is_owner": true,
+                "name": "canoas",
+                "system_generated": false
+            }
+        ]
+    },
+    "key": "auth",
+    "version": 1
+}

@@ -1,0 +1,22 @@
+title: My Lovely Home Automation
+views:
+  - title: Home
+    cards:
+      - type: entities
+        title: Sensor
+        show_header_toggle: true
+        entities:
+          - sensor.yr_symbol
+
+      - type: entities
+        title: Sun
+        show_header_toggle: true
+        entities:
+          - sun.sun
+
+      - type: picture-entity
+        title: Camera
+        entity: camera.camera_oficina
+        camera_image: camera.camera_oficina
+        show_info: true
+        tap_action: dialog
