@@ -23,6 +23,7 @@
     <None Include="docker-compose.yml" />
     <None Include="Proxy\proxy.Dockerfile" />
     <None Include="Raspberry.IO\AppConfig.json" />
+    <None Include="home-bkp.sh" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NewFolder\" />
