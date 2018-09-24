@@ -35,6 +35,7 @@ services:
     image: homeassistant/raspberrypi3-homeassistant
     ports:
       - "8123:8123"
+    network_mode: bridge
     volumes:
       - /home/pi/config:/config
     restart: on-failure
