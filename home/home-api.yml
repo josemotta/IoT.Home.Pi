@@ -19,19 +19,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
 
-  portainer:
-    container_name: home-port
-    image: portainer/portainer
-    ports:
-      - "9000:9000"
-    command: -H unix:///var/run/docker.sock
-    restart: always
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
-
   hass:
-    container_name: home-hass
+    container_name: hass
     image: homeassistant/raspberrypi3-homeassistant
     ports:
       - "8123:8123"
@@ -41,6 +30,28 @@ services:
     restart: on-failure
     environment:
       - TZ=America/SaoPaulo
+
+  portainer:
+    image: portainer/portainer
+    ports:
+      - "9000:9000"
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+  watchtower:
+    image: v2tec/watchtower:armhf-latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_NOTIFICATION=email
+      - WATCHTOWER_NOTIFICATION_EMAIL_FROM=jose@bampli.com
+      - WATCHTOWER_NOTIFICATION_EMAIL_TO=josemotta@bampli.com
+      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER=sm12.internetmailserver.net
+      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER=jose@bampli.com
+      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD="Elef@n7e"
 
 volumes:
   portainer_data:
