@@ -2,7 +2,6 @@ version: "3"
 
 services:
   api:
-    container_name: home-api
     image: josemottalopes/home-api
     build:
       context: .
@@ -20,7 +19,6 @@ services:
       - ASPNETCORE_ENVIRONMENT=Release
 
   hass:
-    container_name: hass
     image: homeassistant/raspberrypi3-homeassistant
     ports:
       - "8123:8123"
