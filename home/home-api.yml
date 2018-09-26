@@ -45,7 +45,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     environment:
-      - WATCHTOWER_NOTIFICATION=email
+      - WATCHTOWER_NOTIFICATIONS=email
       - WATCHTOWER_NOTIFICATION_EMAIL_FROM=jose@bampli.com
       - WATCHTOWER_NOTIFICATION_EMAIL_TO=josemotta@bampli.com
       - WATCHTOWER_NOTIFICATION_EMAIL_SERVER=sm12.internetmailserver.net
