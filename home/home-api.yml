@@ -51,6 +51,7 @@ services:
       - WATCHTOWER_NOTIFICATION_EMAIL_SERVER=sm12.internetmailserver.net
       - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER=jose@bampli.com
       - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD="Elef@n7e"
+    command: --cleanup
 
 volumes:
   portainer_data:
