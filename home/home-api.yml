@@ -13,19 +13,22 @@ services:
     restart: always
     devices:
       - /dev/mem:/dev/mem
+      - /dev/i2c-1:/dev/i2c-1
     volumes:
     - /var/run/lirc:/var/run/lirc
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
 
   hass:
-    image: homeassistant/raspberrypi3-homeassistant:0.77.2
+    image: homeassistant/raspberrypi3-homeassistant:0.78.3
     ports:
       - "8123:8123"
     network_mode: bridge
     volumes:
       - /home/pi/config:/config
     restart: always
+    devices:
+      - /dev/i2c-1:/dev/i2c-1
     environment:
       - TZ=America/Sao_Paulo
 
