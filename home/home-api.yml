@@ -25,9 +25,9 @@ services:
     network_mode: bridge
     volumes:
       - /home/pi/config:/config
-    restart: on-failure
+    restart: always
     environment:
-      - TZ=America/SaoPaulo
+      - TZ=America/Sao_Paulo
 
   portainer:
     image: portainer/portainer
