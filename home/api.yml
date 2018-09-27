@@ -26,6 +26,8 @@ services:
     volumes:
       - /home/pi/config:/config
     restart: always
+    devices:
+      - /dev/i2c-1:/dev/i2c-1
     environment:
       - TZ=America/Sao_Paulo
 
@@ -38,20 +40,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
-
-  watchtower:
-    image: v2tec/watchtower:armhf-latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: always
-    environment:
-      - WATCHTOWER_NOTIFICATIONS=email
-      - WATCHTOWER_NOTIFICATION_EMAIL_FROM=jose@bampli.com
-      - WATCHTOWER_NOTIFICATION_EMAIL_TO=josemotta@bampli.com
-      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER=sm12.internetmailserver.net
-      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER=jose@bampli.com
-      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD="Elef@n7e"
-    command: --cleanup
 
 volumes:
   portainer_data:
