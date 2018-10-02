@@ -14,8 +14,9 @@ services:
     devices:
       - /dev/mem:/dev/mem
       - /dev/i2c-1:/dev/i2c-1
+      - /dev/gpiomem:/dev/gpiomem
     volumes:
-    - /var/run/lirc:/var/run/lirc
+      - /var/run/lirc:/var/run/lirc
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
 
@@ -29,6 +30,7 @@ services:
     restart: always
     devices:
       - /dev/i2c-1:/dev/i2c-1
+      - /dev/gpiomem:/dev/gpiomem
     environment:
       - TZ=America/Sao_Paulo
 
