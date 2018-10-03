@@ -36,12 +36,12 @@ chown root:root /usr/local/bin/docker-compose
 chmod 0755 /usr/local/bin/docker-compose
 
 # Samba server only without client
-sudo apt-get install -y samba samba-common-bin
+apt-get install -y samba samba-common-bin
 # Enable this option to install server AND client
 #sudo apt-get install -y samba samba-common-bin smbclient cifs-utils
 
 # Senha inicial do "config"
-sudo smbpasswd -a pi elefante
+smbpasswd -a pi elefante
 
 cat << EOF >> /etc/samba/smb.conf
 [config]
