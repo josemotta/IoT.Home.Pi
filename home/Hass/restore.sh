@@ -30,7 +30,7 @@ if [ -d "${BACKUP_FOLDER}" ]; then
         chmod 0666 ${BACKUP_LOCATION}/*.yaml
         popd >/dev/null
 
-        log i "Reset complete: ${LATEST_FILE}"
+        log i "Restore complete: ${LATEST_FILE}"
 else
         log e "Backup folder not found, is your USB drive mounted?" 1
 fi
