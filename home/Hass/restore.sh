@@ -1,8 +1,9 @@
 #!/bin/bash
-# jmrl adapted from usb_backup.sh to save yaml configuration with 3 operations:
-#   1. backup hostname.hass.config.yaml.zip (this script)
-#   2. push it to Github and
-#   3. pull latest in order to reset Homeassistant with a fresh DB.
+# jmrl - Adapted from usb_backup.sh to save Homeassistant yaml configuration:
+#   1. backup yaml files to zip based on hostname (see backup.sh)
+#   2. push it to Github and/or pull it back again
+#   3. restore latest backup (this script)
+# These actions should reset Homeassistant to a fresh DB.
 
 BACKUP_FOLDER=/home/pi/backup/
 LATEST_FILE=$(find ${BACKUP_FOLDER} -maxdepth 1 -name '*_hassconfig_*' | sort -t_ -nk3,4 | tail -n1)
@@ -24,6 +25,10 @@ if [ -d "${BACKUP_FOLDER}" ]; then
         fi
         pushd ${BACKUP_LOCATION} >/dev/null
         echo ${LATEST_FILE}
+        rm -r  ${BACKUP_LOCATION}
+        mkdir -m 0777 ${BACKUP_LOCATION}
+        unzip -o ${LATEST_FILE} -d ${BACKUP_LOCATION}
+        chmod 0666 ${BACKUP_LOCATION}/*.yaml
         popd >/dev/null
 
         log i "Reset complete: ${LATEST_FILE}"
