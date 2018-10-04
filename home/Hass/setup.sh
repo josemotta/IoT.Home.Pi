@@ -9,6 +9,7 @@ KEY_USER="josemotta@bampli.com"
 KEY_FILE="/home/pi/.ssh/id_rsa"
 BACKUP_FOLDER=/home/pi/backup/
 BACKUP_LOCATION=/home/pi/config
+DEFAULT_CONFIG=_hassconfig_anavi.zip
 
 # Hassbian scripts
 #   samba:   file server
@@ -27,8 +28,9 @@ BACKUP_LOCATION=/home/pi/config
 git clone $REPO_HOME $HOME
 
 # Create Homeassistant config and backup dirs
-mkdir -m 0777 BACKUP_FOLDER
-mkdir -m 0777 BACKUP_LOCATION
+mkdir -m 0777 ${BACKUP_FOLDER}
+mkdir -m 0777 ${BACKUP_LOCATION}
+cp ${HOME}Hass/${DEFAULT_CONFIG} ${BACKUP_FOLDER}
 
 # Docker
 curl -fsSL get.docker.com -o get-docker.sh
