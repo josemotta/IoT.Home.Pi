@@ -7,6 +7,8 @@ HOME="/home/pi/IoT.Home.Pi/"
 DOCKER_COMPOSE="$HOME/home/Docker/docker-compose"
 KEY_USER="josemotta@bampli.com"
 KEY_FILE="/home/pi/.ssh/id_rsa"
+BACKUP_FOLDER=/home/pi/backup/
+BACKUP_LOCATION=/home/pi/config
 
 # Hassbian scripts
 #   samba:   file server
@@ -23,6 +25,10 @@ KEY_FILE="/home/pi/.ssh/id_rsa"
 
 # IoT.Home.Pi
 git clone $REPO_HOME $HOME
+
+# Create Homeassistant config and backup dirs
+mkdir -m 0777 BACKUP_FOLDER
+mkdir -m 0777 BACKUP_LOCATION
 
 # Docker
 curl -fsSL get.docker.com -o get-docker.sh
