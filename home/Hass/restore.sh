@@ -24,7 +24,6 @@ if [ -d "${BACKUP_FOLDER}" ]; then
                 exit
         fi
         pushd ${BACKUP_LOCATION} >/dev/null
-        echo ${LATEST_FILE}
         rm -r  ${BACKUP_LOCATION}
         mkdir -m 0777 ${BACKUP_LOCATION}
         unzip -o ${LATEST_FILE} -d ${BACKUP_LOCATION}
