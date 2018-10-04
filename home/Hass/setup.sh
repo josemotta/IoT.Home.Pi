@@ -60,6 +60,15 @@ cat << EOF >> /etc/samba/smb.conf
     browsable = yes
     public = yes
     writable = yes
+
+[backup]
+    path = /home/pi/backup
+    available = yes
+    valid users = pi
+    read only = no
+    browsable = yes
+    public = yes
+    writable = yes
 EOF
 
 # SSH
