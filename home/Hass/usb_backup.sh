@@ -5,7 +5,7 @@
 # Do check the storage on your drive.
 
 BACKUP_FOLDER=/home/homeassistant/
-BACKUP_FILE=${BACKUP_FOLDER}hass-config_$(date +"%Y%m%d_%H%M%S").zip
+BACKUP_FILE=${BACKUP_FOLDER}${HOSTNAME}_hassconfig_$(date +"%Y%m%d_%H%M%S").zip
 BACKUP_LOCATION=/home/homeassistant/.homeassistant
 INCLUDE_DB=true
 DAYSTOKEEP=0 # Set to 0 to keep it forever.
