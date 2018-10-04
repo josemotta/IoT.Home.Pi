@@ -21,7 +21,6 @@ log() {
 if [ -d "${BACKUP_FOLDER}" ]; then
         if [ ! -e "${LATEST_FILE}" ]; then
                 log e "No backup file found, is it correct?" 1
-                exit
         fi
         pushd ${BACKUP_LOCATION} >/dev/null
         rm -r  ${BACKUP_LOCATION}
