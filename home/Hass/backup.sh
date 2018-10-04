@@ -3,15 +3,13 @@
 #   1. backup hostname.hass.config.yaml.zip (this script)
 #   2. push it to Github and
 #   3. pull latest in order to reset Homeassistant with a fresh DB.
-# Default keeps last 30 days of yaml files only, no DB or any other file.
-# You can either include or exclude the database, incase you have mysql or simply don't want to backup a big file.
-# Do check the storage on your drive.
+# Default keeps yaml files only, no DB or any other file.
 
 BACKUP_FOLDER=/home/pi/backup/
 BACKUP_FILE=${BACKUP_FOLDER}${HOSTNAME}_hassconfig_$(date +"%y%m%d_%H%M").zip
 BACKUP_LOCATION=/home/pi/config
 INCLUDE_DB=false
-DAYSTOKEEP=30 # Set to 0 to keep it forever.
+DAYSTOKEEP=0 # Set to 0 to keep it forever.
 
 log() {
         if [ "${DEBUG}" == "true" ] || [ "${1}" != "d" ]; then
