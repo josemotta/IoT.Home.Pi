@@ -1,6 +1,0 @@
-sensor.htu21d_sensor_temperature:
-  icon: mdi:thermometer
-  friendly_name: "Temperature"
-sensor.htu21d_sensor_humidity:
-  icon: mdi:weather-rainy
-  friendly_name: "Humidity"
