@@ -3,12 +3,12 @@ set -e
 
 # Home Setup
 #REPO_HOME="https://github.com/josemotta/IoT.Home.Pi.git"
-HOME="/home/pi/IoT.Home.Pi/"
-DOCKER_COMPOSE="$HOME/home/Docker/docker-compose"
+HOME="/home/pi/IoT.Home.Pi/home"
+DOCKER_COMPOSE="$HOME/Docker/docker-compose"
 KEY_USER="josemotta@bampli.com"
 KEY_FILE="/home/pi/.ssh/id_rsa"
 BACKUP_FOLDER=/home/pi/backup/
-BACKUP_LOCATION=/home/pi/config
+BACKUP_LOCATION=/home/pi/config/
 DEFAULT_CONFIG=_hassconfig_anavi.zip
 
 # Hassbian scripts
@@ -31,7 +31,7 @@ DEFAULT_CONFIG=_hassconfig_anavi.zip
 # Create Homeassistant config and backup dirs
 mkdir -m 0777 ${BACKUP_FOLDER}
 mkdir -m 0777 ${BACKUP_LOCATION}
-cp ${HOME}Hass/${DEFAULT_CONFIG} ${BACKUP_FOLDER}
+cp ${HOME}/Hass/${DEFAULT_CONFIG} ${BACKUP_FOLDER}
 
 # Docker
 curl -fsSL get.docker.com -o get-docker.sh
