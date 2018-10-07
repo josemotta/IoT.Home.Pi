@@ -2,14 +2,12 @@
 set -e
 
 # Home Setup
-REPO_HOME="https://github.com/josemotta/IoT.Home.Pi.git"
-HOME="/home/pi/IoT.Home.Pi/"
-DOCKER_COMPOSE="$HOME/home/Docker/docker-compose"
+HOME="/home/pi/IoT.Home.Pi/home"
+DOCKER_COMPOSE="$HOME/Docker/docker-compose"
 KEY_USER="josemotta@bampli.com"
 KEY_FILE="/home/pi/.ssh/id_rsa"
 BACKUP_FOLDER=/home/pi/backup/
-BACKUP_LOCATION=/home/pi/config
-DEFAULT_CONFIG=_hassconfig_anavi.zip
+DEFAULT_CONFIG=*_hassconfig_*
 
 # Hassbian scripts
 #   samba:   file server
@@ -24,52 +22,20 @@ DEFAULT_CONFIG=_hassconfig_anavi.zip
 #y
 #EOF
 
-# IoT.Home.Pi
-git clone $REPO_HOME $HOME
-
-# Create Homeassistant config and backup dirs
-mkdir -m 0777 ${BACKUP_FOLDER}
-mkdir -m 0777 ${BACKUP_LOCATION}
-cp ${HOME}Hass/${DEFAULT_CONFIG} ${BACKUP_FOLDER}
+cp ${HOME}/Hass/${DEFAULT_CONFIG} ${BACKUP_FOLDER}
 
 # Docker
 curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
-# groupadd docker
-usermod -aG docker pi
+sudo usermod -aG docker pi
 
 # Docker-compose
-cp $DOCKER_COMPOSE /usr/local/bin
-chown root:root /usr/local/bin/docker-compose
-chmod 0755 /usr/local/bin/docker-compose
-
-# Samba server only without client
-apt-get install -y samba samba-common-bin
-# Enable this option to install server AND client
-#sudo apt-get install -y samba samba-common-bin smbclient cifs-utils
+sudo cp $DOCKER_COMPOSE /usr/local/bin
+sudo chown root:root /usr/local/bin/docker-compose
+sudo chmod 0755 /usr/local/bin/docker-compose
 
 # Senha inicial do "config"
-smbpasswd -a pi elefante
-
-cat << EOF >> /etc/samba/smb.conf
-[config]
-    path = /home/pi/config
-    available = yes
-    valid users = pi
-    read only = no
-    browsable = yes
-    public = yes
-    writable = yes
-
-[backup]
-    path = /home/pi/backup
-    available = yes
-    valid users = pi
-    read only = no
-    browsable = yes
-    public = yes
-    writable = yes
-EOF
+#sudo smbpasswd -a pi elefante
 
 # SSH
 ssh-keygen -t rsa -b 4096 -C $KEY_USER -q -N "" -f $KEY_FILE
