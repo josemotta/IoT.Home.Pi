@@ -46,7 +46,7 @@ services:
 
   mosquitto:
     build:
-      context: ./mosquitto
+      context: ./Mosquitto
     restart: unless-stopped
     ports:
      - 0.0.0.0:1883:1883
