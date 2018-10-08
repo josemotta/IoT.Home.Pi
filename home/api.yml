@@ -44,5 +44,16 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
 
+  mosquitto:
+    build:
+      context: ./mosquitto
+    restart: unless-stopped
+    ports:
+     - 0.0.0.0:1883:1883
+    network_mode: bridge 
+    volumes:
+     - ./Mosquitto/auth.conf:/etc/mosquitto/conf.d/auth.conf:ro
+     - ./Mosquitto/users.passwd:/etc/mosquitto/users.passwd:ro
+
 volumes:
   portainer_data:
