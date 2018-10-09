@@ -1,5 +1,4 @@
 FROM resin/raspberry-pi-debian:stretch
-
 RUN \
   apt-get update \
   && apt-get upgrade -y \

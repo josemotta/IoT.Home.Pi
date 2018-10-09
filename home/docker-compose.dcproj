@@ -11,6 +11,9 @@
   <ItemGroup>
     <None Include="api.yml" />
     <None Include="home-compose.yml" />
+    <None Include="Mosquitto\auth.conf" />
+    <None Include="Mosquitto\Dockerfile" />
+    <None Include="Mosquitto\users.passwd" />
     <None Include="Proxy\setup\cert.pem" />
     <None Include="Proxy\setup\key.pem" />
     <None Include="home-api.yml" />
