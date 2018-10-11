@@ -22,9 +22,9 @@
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
 
-build.bat
-build.sh
-IO.Swagger.sln
-global.json
-src\IO.Swagger\IO.Swagger.xproj
-src\IO.Swagger\project.json
+home/build.bat
+home/build.sh
+home/IO.Swagger.sln
+home/global.json
+home/src/IO.Swagger/IO.Swagger.xproj
+home/src/IO.Swagger/project.json
