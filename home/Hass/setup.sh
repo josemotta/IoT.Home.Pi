@@ -25,22 +25,22 @@ PASSWORD=elefante
 #y
 #EOF
 
-sudo chmod 0777 $BACKUP_FOLDER
-sudo chmod 0777 $CONFIG_FOLDER
+chmod 0777 $BACKUP_FOLDER
+chmod 0777 $CONFIG_FOLDER
 cp ${HOME}/Hass/${DEFAULT_CONFIG} ${BACKUP_FOLDER}
 
 # Docker
 curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
-sudo usermod -aG docker pi
+usermod -aG docker pi
 
 # Docker-compose
-sudo cp $DOCKER_COMPOSE /usr/local/bin
-sudo chown root:root /usr/local/bin/docker-compose
-sudo chmod 0755 /usr/local/bin/docker-compose
+cp $DOCKER_COMPOSE /usr/local/bin
+chown root:root /usr/local/bin/docker-compose
+chmod 0755 /usr/local/bin/docker-compose
 
 # Senha inicial do "config"
-echo -e "$PASSWORD\n$PASSWORD" | smbpasswd -a -s -c /etc/smb.conf "$USERNAME"
+echo -e "$PASSWORD\n$PASSWORD" | smbpasswd -a -s -c /etc/samba/smb.conf "$USERNAME"
 
 # SSH
 ssh-keygen -t rsa -b 4096 -C $KEY_USER -q -N "" -f $KEY_FILE
