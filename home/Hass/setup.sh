@@ -40,7 +40,7 @@ chown root:root /usr/local/bin/docker-compose
 chmod 0755 /usr/local/bin/docker-compose
 
 # Senha inicial do "config"
-echo -e "$PASSWORD\n$PASSWORD" | smbpasswd -a -s -c /etc/samba/smb.conf "$USERNAME"
+echo -e "$PASSWORD\n$PASSWORD" | smbpasswd -a -s -c /etc/samba/smb.conf $USERNAME
 
 # SSH
 ssh-keygen -t rsa -b 4096 -C $KEY_USER -q -N "" -f $KEY_FILE
