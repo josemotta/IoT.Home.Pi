@@ -6,8 +6,11 @@ HOME="/home/pi/IoT.Home.Pi/home"
 DOCKER_COMPOSE="$HOME/Docker/docker-compose"
 KEY_USER="josemotta@bampli.com"
 KEY_FILE="/home/pi/.ssh/id_rsa"
+CONFIG_FOLDER=/home/pi/config/
 BACKUP_FOLDER=/home/pi/backup/
 DEFAULT_CONFIG=*_hassconfig_*
+USERNAME=pi
+PASSWORD=elefante
 
 # Hassbian scripts
 #   samba:   file server
@@ -22,6 +25,8 @@ DEFAULT_CONFIG=*_hassconfig_*
 #y
 #EOF
 
+sudo chmod 0777 $BACKUP_FOLDER
+sudo chmod 0777 $CONFIG_FOLDER
 cp ${HOME}/Hass/${DEFAULT_CONFIG} ${BACKUP_FOLDER}
 
 # Docker
@@ -35,7 +40,7 @@ sudo chown root:root /usr/local/bin/docker-compose
 sudo chmod 0755 /usr/local/bin/docker-compose
 
 # Senha inicial do "config"
-#sudo smbpasswd -a pi elefante
+echo -e "$PASSWORD\n$PASSWORD" | smbpasswd -a -s -c /etc/smb.conf "$USERNAME"
 
 # SSH
 ssh-keygen -t rsa -b 4096 -C $KEY_USER -q -N "" -f $KEY_FILE
