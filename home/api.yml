@@ -21,7 +21,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Release
 
   hass:
-    image: homeassistant/raspberrypi3-homeassistant:0.79.3
+    image: homeassistant/raspberrypi3-homeassistant:0.80.3
     ports:
       - "8123:8123"
     network_mode: bridge
