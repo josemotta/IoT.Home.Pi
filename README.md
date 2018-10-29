@@ -21,24 +21,85 @@ The Haspbian image is built with same script that generates the official Raspbia
 
 For this project, this pi-gen tool was forked again to `josemotta/pi-gen` and a new `thing` [branch](https://github.com/josemotta/pi-gen/tree/thing) added an extra stage-4 to include Lirc installation and other initial demo setup for the IoT.Starter.Pi embryo.
 
-The extra stage-4 also installs Samba server to expose a couple folders:
+Please check the [run.sh](https://github.com/josemotta/pi-gen/blob/thing/stage4/01-tweaks/00-run.sh) script shown below:
+
+    #!/bin/bash -e
+    
+    install -d "${ROOTFS_DIR}/var/run/lirc"
+    install -m 666 -d "${ROOTFS_DIR}/home/pi/config"
+    install -m 666 -d "${ROOTFS_DIR}/home/pi/backup"
+    
+    rm -f "${ROOTFS_DIR}/etc/lirc/lircd.conf.d/devinput.lircd.conf"
+    
+    install -m 644 files/i2c1-bcm2708.dtbo "${ROOTFS_DIR}/boot/overlays"
+    
+    install -m 644 files/config.txt "${ROOTFS_DIR}/boot/config.txt"
+    install -m 644 files/lirc_options.conf "${ROOTFS_DIR}/etc/lirc/lirc_options.conf"
+    install -m 644 files/ir-remote.conf "${ROOTFS_DIR}/etc/modprobe.d/ir-remote.conf"
+    install -m 644 files/lirc24.conf "${ROOTFS_DIR}/etc/lirc/lircd.conf.d/lirc24.conf"
+    install -m 644 files/lirc44.conf "${ROOTFS_DIR}/etc/lirc/lircd.conf.d/lirc44.conf"
+    install -m 644 files/Samsung_BN59-00678A.conf "${ROOTFS_DIR}/etc/lirc/lircd.conf.d/Samsung_BN59-00678A.conf"
+    install -m 644 files/AppConfig.json "${ROOTFS_DIR}/app"
+    
+    install -m 755 files/setup.sh "${ROOTFS_DIR}/home/pi/setup.sh"
+    
+    rm -f "${ROOTFS_DIR}/etc/default/keyboard"
+    install -m 644 files/keyboard "${ROOTFS_DIR}/etc/default/keyboard"
+    
+    cat << EOF >> ${ROOTFS_DIR}/etc/samba/smb.conf
+    [config]
+    path = /home/pi/config
+    available = yes
+    valid users = pi
+    read only = no
+    browsable = yes
+    public = yes
+    writable = yes
+    [backup]
+    path = /home/pi/backup
+    available = yes
+    valid users = pi
+    read only = no
+    browsable = yes
+    public = yes
+    writable = yes
+    EOF
+
+As you can see, the stage-4 also installs and configure the Samba server to expose a couple folders:
 
 - **/home/pi/config**: this folder is for the Home Assistant configuration
 - **/home/pi/backup**: folder to backup/restore the embryo setup
 
-After running pi-gen for half an hour, a SD disk image is generated with all dependencies already installed, and ready to be inserted at Raspberry Pi drive. This image has been tested on a RPI 3B with success. Burn image with Etcher or similar to get the heart of the embryo.
+After running pi-gen for more than half an hour, a SD disk image is generated with all dependencies already installed, and ready to be inserted at Raspberry Pi drive. This image has been tested on a RPI 3B with success. Burn the image with Etcher or similar to get the heart of the embryo.
 
 ## RPI setup
 
-The SD disk with the embryo is inserted at a Raspberry Pi equipped with [Anavi Infrared pHat](https://www.crowdsupply.com/anavi-technology/infrared-phat) an add-on board that converts your Raspberry Pi to a smart remote control. It also supports sensor modules for temperature, humidity, barometric pressure, and light. Please check the RPI below with three sensors attached and at left the double infrared leds. Anavi Infrared pHat is attached to RPI GPIO connector. Raspberry Pi also has 5V power and RJ-45 Ethernet connected to an Internet router.
+The SD disk with the embryo is inserted at a Raspberry Pi equipped with an [Anavi Infrared pHat](https://www.crowdsupply.com/anavi-technology/infrared-phat), an add-on board that converts your Raspberry Pi to a smart remote control. It also supports sensor modules for temperature, humidity, barometric pressure, and light. Please check the RPI below with three sensors attached and at top left the double infrared leds that provide strong IR signals. Anavi Infrared pHat is attached through the RPI GPIO connector. Raspberry Pi also has 5V power and is connected to a Internet router by the RJ-45 network cable.
 
 ![](https://i.imgur.com/FTP6UVU.png)
 
-On the very first run the file system is initialized. After boot, we should login to the Raspberry Pi for the first time and change the initial password for `pi` user. Please note it was kept "raspberry", the same from raspberrypi.org Raspbian image. Since SSH is available, it is possible to use the headless RPI, opening a terminal window. Otherwise, just plug an USB keyboard and HDMI connector to interact directly with the embryo. 
+On the very first run the file system is initialized. After boot, we should login to the Raspberry Pi for the first time and change the initial password for `pi` user. Please note it was kept "raspberry", the same from raspberrypi.org Raspbian image. Since SSH is available, it is possible to use the headless RPI, opening a bash terminal from another micro computer. Otherwise, just plug the USB keyboard and HDMI connectors to interact directly with the embryo. 
 
 ### Clone repo
 
-In order to develop this project, next step is to clone the `Iot.Home.Pi` repository locally at Raspberry Pi. There should be already a script for that at `/home/pi` folder, you just need to run:
+In order to develop this embryo, next step is to clone the `Iot.Home.Pi` repository locally at Raspberry Pi. Thanks to the modified pi-gen, there should be already a script for that. 
+
+    pi@copa:~ $ cat setup.sh
+    #!/bin/sh
+    set -e
+    
+    # Home Setup
+    REPO="https://github.com/josemotta/IoT.Home.Pi.git"
+    HOME="/home/pi/IoT.Home.Pi"
+    
+    git clone $REPO $HOME
+
+Then, staying at default `/home/pi` folder, and you just need to run:
 
     ./setup.sh
 
+We have now the essential files to start working on the embryo project.
+
+## Build fast at x64 micro
+
+The 
