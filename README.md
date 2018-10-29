@@ -345,3 +345,5 @@ Again docker-compose, now orchestrating containers to run in the proper order:
 	c1163bb370db        homeassistant/raspberrypi3-homeassistant:0.78.3   "/bin/entry.sh pythoâ¦"   48 seconds ago      Up 36 seconds       0.0.0.0:8123->8123/tcp   home_hass_1
 	71cf17d6af66        josemottalopes/home-api                           "dotnet IO.Swagger.dâ¦"   48 seconds ago      Up 36 seconds       0.0.0.0:5000->5000/tcp   home_api_1
 	pi@copa:~/IoT.Home.Pi/home $
+
+![](https://i.imgur.com/1zJm50p.png)
