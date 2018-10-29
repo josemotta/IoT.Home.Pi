@@ -19,9 +19,7 @@ There are many ways to install Home Assistant, since it supports many different 
 
 The Haspbian image is built with same script that generates the official Raspbian image's from the Raspberry Pi Foundation. The same tool used to create the raspberrypi.org Raspbian images was forked from `home-assistant/pi-gen` repository. The final stages were ripped off and a new stage-3 was replaced to install Home Assistant. With the exception of git , all dependencies are  handled by the build script.
 
-For this project, this pi-gen tool was forked again to `josemotta/pi-gen` and a new `thing` [branch](https://github.com/josemotta/pi-gen/tree/thing) added an extra stage-4 to include Lirc installation and other initial demo setup for the IoT.Starter.Pi embryo.
-
-Please check the [run.sh](https://github.com/josemotta/pi-gen/blob/thing/stage4/01-tweaks/00-run.sh) script shown below:
+For this project, this pi-gen tool was forked again from `home-assistant/pi-gen` to `josemotta/pi-gen` and a new `thing` [branch](https://github.com/josemotta/pi-gen/tree/thing) added a stage-4 to include Lirc installation and other initial setup for the IoT.Starter.Pi embryo. Please check the [run.sh](https://github.com/josemotta/pi-gen/blob/thing/stage4/01-tweaks/00-run.sh) script below, showing some useful dependencies added to the disk image.
 
     #!/bin/bash -e
     
