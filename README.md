@@ -1,6 +1,6 @@
 # Iot.Home.Pi
 
-**IoT Home for Raspberry Pi**
+**IoT Home Assistant API for Raspberry Pi**
 
 ## Introduction
 
