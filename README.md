@@ -4,18 +4,18 @@
 
 ## Introduction
 
-This post tests interaction between Home Assistant and Docker containers. Previous posts from this series include:
+This project tests interaction between Home Assistant and Docker containers. Previous texts  from this series include:
 
-- [IoT.Starter.Pi.Thing](https://github.com/josemotta/IoT.Starter.Pi.Thing "IoT Starter Pi Thing"): Embryos for Home Intelligence using Raspberry Pi with Linux, Docker & .NET Core. At this post, we have a Raspberry Pi model 3B equipped with Raspbian GNU/Linux 9.1 Stretch Lite and a web service, generated almost automatically by Swagger Hub. The embryo platform includes API and UI in separated containers to boost the start phase of IoT initiatives.
+- [IoT.Starter.Pi.Thing](https://github.com/josemotta/IoT.Starter.Pi.Thing "IoT Starter Pi Thing"): Embryos for Home Intelligence using Raspberry Pi with Linux, Docker & .NET Core. This project is based on a Raspberry Pi model 3B equipped with Raspbian GNU/Linux 9.1 Stretch Lite and a web service, generated almost automatically by Swagger Hub. The embryo platform includes API and UI in separated containers to boost the start phase of IoT initiatives.
 - [IoT.Home.Thing](https://github.com/josemotta/IoT.Home.Thing "IoT Home Thing"): Home of Things added **Raspberry# IO** to the platform. It is a .NET/Mono IO Library for Raspberry Pi, initiative of the Raspberry# Community. First updated to .Net Standard 1.6 by Ramon Balaguer, then upgraded to .NET Core 2.1 and integrated to the IoT.Starter.Pi embryo.
 
-Since we are building an embryo for a [IoT starter](https://github.com/josemotta/IoT.Starter), an empty MVC website has been provided until now as the seed for the user interface (UI). At this post, this empty user interface will be substituted by the Home Assistant application, allowing faster and productive results immediately after the project is launched.
+Since we are building an embryo for an [IoT starter](https://github.com/josemotta/IoT.Starter), an empty MVC website has been provided until now as the seed for the user interface (UI). Now, this empty user interface will be substituted by the Home Assistant application, allowing faster and productive results immediately after the project is launched.
 
-[Home Assistant](https://www.home-assistant.io/) is an open-source home automation platform running on Python 3. It is used to track and control all devices at home and has many utilities to help us with automate control. You can check at Home Assistant [blog](https://www.home-assistant.io/blog/) how dynamic is the community with constant updates and upgrades for the platform. We expect to interact Home Assistant with the embryo API available at the  IoT.Starter.Pi thing device.
+[Home Assistant](https://www.home-assistant.io/) is an open-source home automation platform running on Python 3. It is used to track and control all devices at home and has many utilities to help us with automation control. You can check at Home Assistant [blog](https://www.home-assistant.io/blog/) how dynamic is the community with constant updates and upgrades for the platform. We expect to interact Home Assistant with the embryo API available at the  IoT.Starter.Pi thing device.
 
 ## Generate image disk
 
-There are many ways to install Home Assistant, since it supports many different hardware platforms. This post focus on Haspbian, a disk image  that contains all needed to run Home Assistant on a Raspberry Pi.
+There are many ways to install Home Assistant, since it supports many different hardware platforms. This project focus on Haspbian, a disk image  that contains all needed to run Home Assistant on a Raspberry Pi.
 
 The Haspbian image is built with same script that generates the official Raspbian image's from the Raspberry Pi Foundation. The same tool used to create the raspberrypi.org Raspbian images was forked from `home-assistant/pi-gen` repository. The final stages were ripped off and a new stage-3 was replaced to install Home Assistant. With the exception of git , all dependencies are  handled by the build script.
 
