@@ -290,7 +290,42 @@ The folder `~/IoT.Home.Pi/home` should contain the essential files for the embry
 
 ### Install Docker
 
-There is a `setup.sh` script in the Hass folder to install Docker and docker-compose. 
+There is a `setup.sh` script in the Hass folder to install Docker and docker-compose. As explained [before](https://github.com/josemotta/IoT.Starter.Pi.Thing/wiki/5.-IoT.Starter.Pi.Compose) the latest version of docker-compose for RPI was built manually and is installed by the setup script. Also a password should be set to protect the exposed config & backup folders.
+
+	#!/bin/sh
+	set -e
+	
+	DOCKER_COMPOSE="$HOME/Docker/docker-compose"
+	KEY_USER="josemotta@bampli.com"
+	KEY_FILE="/home/pi/.ssh/id_rsa"
+	CONFIG_FOLDER=/home/pi/config/
+	BACKUP_FOLDER=/home/pi/backup/
+	DEFAULT_CONFIG=*_hassconfig_*
+	USERNAME=pi
+	PASSWORD=password
+	
+	chmod 0777 $BACKUP_FOLDER
+	chmod 0777 $CONFIG_FOLDER
+	cp ${HOME}/Hass/${DEFAULT_CONFIG} ${BACKUP_FOLDER}
+	
+	# Docker
+	curl -fsSL get.docker.com -o get-docker.sh
+	sh get-docker.sh
+	usermod -aG docker pi
+	
+	# Docker-compose
+	cp $DOCKER_COMPOSE /usr/local/bin
+	chown root:root /usr/local/bin/docker-compose
+	chmod 0755 /usr/local/bin/docker-compose
+	
+	# Senha inicial do "config"
+	echo -e "$PASSWORD\n$PASSWORD" | smbpasswd -a -s -c /etc/samba/smb.conf $USERNAME
+	
+	# SSH
+	ssh-keygen -t rsa -b 4096 -C $KEY_USER -q -N "" -f $KEY_FILE
+
+Change directory to Hass and run `sudo ./setup.sh` to finish RPI setup.
+	
 
 ### Pull images
 
