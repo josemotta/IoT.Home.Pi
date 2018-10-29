@@ -78,9 +78,9 @@ The SD disk with the embryo is inserted at a Raspberry Pi equipped with an [Anav
 
 On the very first run the file system is initialized. After boot, we should login to the Raspberry Pi for the first time and change the initial password for `pi` user. Please note it was kept "raspberry", the same from raspberrypi.org Raspbian image. Since SSH is available, it is possible to use the headless RPI, opening a bash terminal from another micro computer. Otherwise, just plug the USB keyboard and HDMI connectors to interact directly with the embryo. 
 
-### Clone repo
+### Clone the repo
 
-In order to develop this embryo, next step is to clone the `Iot.Home.Pi` repository locally at Raspberry Pi. Thanks to the modified pi-gen, there should be already a script for that. 
+Next step is cloning the `Iot.Home.Pi` repository locally at Raspberry Pi. Thanks to the modified pi-gen, there should be already a script for that at pi default folder. Check below the pi user at `copa`, the chosen hostname for this embryo.
 
     pi@copa:~ $ cat setup.sh
     #!/bin/sh
@@ -96,7 +96,14 @@ Then, staying at default `/home/pi` folder, and you just need to run:
 
     ./setup.sh
 
-We have now the essential files to start working on the embryo project.
+The folder `/home/pi/IoT.Home.Pi` contains the essential files for the embryo project.
+
+    pi@copa:~ $ ls -l
+    total 16
+    drwxrwxrwx 3 root root 4096 Oct 24 16:57 backup
+    drwxrwxrwx 5 root root 4096 Oct 29 15:13 config
+    drwxr-xr-x 4 pi   pi   4096 Oct  6 20:10 IoT.Home.Pi
+    -rwxr-xr-x 1 root root  134 Oct  6 19:05 setup.sh
 
 ## Build fast at x64 micro
 
