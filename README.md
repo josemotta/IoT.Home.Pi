@@ -70,7 +70,7 @@ As you can see, the stage-4 also installs and configure the Samba server to expo
 
 After running `pi-gen` for half an hour on a virtual Debian machine created on my development PC, a SD disk image is generated with all dependencies installed. Burn the image with Etcher and get the heart of the embryo, ready to be implanted at the Raspberry Pi drive. The image was tested on RPI 2B/3B with success. Keep the SD disk for a while because we will build the project first.
 
-## Build at fast micro
+## Build at developer machine
 
 According to [IoT.Starter.Pi.Thing](https://github.com/josemotta/IoT.Starter.Pi.Thing "IoT Starter Pi Thing") strategy, build is done outside RPI, using a fast x64 micro equipped with Visual Studio and Docker using with Hyper-V machines. While we still are at the development machine with Windows 10, we should build the project. The docker-compose command is ruled by `api.yml`.
 
@@ -221,7 +221,7 @@ Final build step should use again the docker-compose command, this time to push 
 
 Now, we can go to RPI to deploy the embryo.
 
-## Deploy embryo to RPI
+## Deploy to RPI
 
 The SD disk with the embryo heart is inserted into Raspberry Pi driver slot. The board is already equipped with an [Anavi Infrared pHat](https://www.crowdsupply.com/anavi-technology/infrared-phat), an add-on board that converts your Raspberry Pi to a smart remote control. It also supports sensor modules for temperature, humidity, barometric pressure, and light. Please check the RPI below with three sensors attached and at top left the double infrared leds that provide strong IR signals. Anavi Infrared pHat is attached through the RPI GPIO connector. Raspberry Pi also has 5V power and is connected to a Internet router by the RJ-45 network cable.
 
@@ -292,7 +292,7 @@ The folder `~/IoT.Home.Pi/home` should contain the essential files for the embry
 
 There is a `setup.sh` script in the Hass folder to install Docker and docker-compose. 
 
-### Pull the images
+### Pull images
 
 The docker-compose pull command is used to download the latest `josemottalopes/home-api` image from Docker Hub.
 
