@@ -386,7 +386,7 @@ The docker-compose pull command is used to download the latest `josemottalopes/h
 
 ### Run them all 
 
-Again docker-compose, now use `docker-compose up -d`  command to orchestrate containers properly:
+Again another docker-compose command, now use `docker-compose up -d`  to orchestrate containers properly:
 
 	pi@copa:~/IoT.Home.Pi/home $ docker-compose -f api.yml up -d
 	Creating network "home_default" with the default driver
