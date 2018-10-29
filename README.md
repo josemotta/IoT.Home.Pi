@@ -464,7 +464,7 @@ The Swagger UI can also be used to issue IR commands, as shown below:
 
 ## Conclusions
 
-This IoT.Home.Pi embryo is ready to be customized, using the automatic code generator from Swagger Hub to help with API design. The Home Assistant should be properly configured to show information and control available devices. The Portainer manager allows checking all containers and their related info. It is also possible to stop and run containers using both portainer and docker-compose methods.
+The **IoT.Home.Pi embryo** is ready to be customized, using the automatic code generator from Swagger Hub to help with API design. The Home Assistant should be properly configured to show information and control available devices. The Portainer manager allows checking all containers and their related info. It is also possible to stop and run containers using both portainer and docker-compose methods.
 
 Have fun and a nice job in your IoT initiative! 
 
