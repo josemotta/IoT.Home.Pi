@@ -68,7 +68,7 @@ As you can see, the stage-4 also installs and configure the Samba server to expo
 - **/home/pi/config**: this folder is for the Home Assistant configuration
 - **/home/pi/backup**: folder to backup/restore the embryo setup
 
-After running pi-gen for more than half an hour, a SD disk image is generated with all dependencies already installed, and ready to be inserted at Raspberry Pi drive. This image has been tested on a RPI 3B with success. Burn the image with Etcher or similar to get the heart of the embryo.
+After running `pi-gen` for half an hour on a virtual Debian machine, created on my development PC, a SD disk image is generated with all dependencies already installed. Ready to be inserted at Raspberry Pi drive, the image has been tested on a RPI 3B with success. Burn the image with Etcher or similar to get the heart of the embryo.
 
 ## RPI setup
 
