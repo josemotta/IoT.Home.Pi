@@ -74,7 +74,7 @@ After running `pi-gen` for half an hour on a virtual Debian machine created on m
 
 According to [IoT.Starter.Pi.Thing](https://github.com/josemotta/IoT.Starter.Pi.Thing "IoT Starter Pi Thing") strategy, build is done outside RPI, using a fast x64 micro equipped with Windows 10, Visual Studio, Docker and Hyper-V. At the development machine, we should build the project with docker-compose command, according to  `api.yml` file.
 
-Please see the file below including services **api**, **hass**, **mosquitto** and **portainer**.
+Please see the file below including **api**, **hass**, **mosquitto** and **portainer** services.
 
 	version: "3"
 	
