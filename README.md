@@ -290,7 +290,7 @@ The folder `~/IoT.Home.Pi/home` should contain the essential files for the embry
 
 ### Install Docker
 
-There is a `setup.sh` script in the Hass folder to install Docker and docker-compose. As explained [before](https://github.com/josemotta/IoT.Starter.Pi.Thing/wiki/5.-IoT.Starter.Pi.Compose) the latest version of docker-compose for RPI was built manually and is installed by the setup script. Also a password should be set to protect the exposed config & backup folders.
+There is a `setup.sh` script in the Hass folder to install Docker and docker-compose. As explained [before](https://github.com/josemotta/IoT.Starter.Pi.Thing/wiki/5.-IoT.Starter.Pi.Compose), the latest version of docker-compose for RPI was built manually and is installed by the setup script. Also a password should be set to protect the exposed config & backup folders.
 
 	#!/bin/sh
 	set -e
@@ -324,7 +324,33 @@ There is a `setup.sh` script in the Hass folder to install Docker and docker-com
 	# SSH
 	ssh-keygen -t rsa -b 4096 -C $KEY_USER -q -N "" -f $KEY_FILE
 
-Change directory to Hass and run `sudo ./setup.sh` to finish RPI setup.
+Change directory to Hass and run `sudo ./setup.sh` to finish RPI setup. Then check if Docker is running fine.
+
+	pi@copa:~ $ docker version
+	Client:
+	 Version:           18.06.1-ce
+	 API version:       1.38
+	 Go version:        go1.10.3
+	 Git commit:        e68fc7a
+	 Built:             Tue Aug 21 17:30:52 2018
+	 OS/Arch:           linux/arm
+	 Experimental:      false
+	
+	Server:
+	 Engine:
+	  Version:          18.06.1-ce
+	  API version:      1.38 (minimum version 1.12)
+	  Go version:       go1.10.3
+	  Git commit:       e68fc7a
+	  Built:            Tue Aug 21 17:26:37 2018
+	  OS/Arch:          linux/arm
+	  Experimental:     false
+
+	pi@copa:~ $ docker-compose version
+	docker-compose version 1.19.0-rc2, build dfcb02c
+	docker-py version: 2.7.0
+	CPython version: 2.7.13
+	OpenSSL version: OpenSSL 1.0.1t  3 May 2016
 	
 
 ### Pull images
